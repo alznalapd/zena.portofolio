@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio Idola - H. Prabowo Subianto | Tugas Informatika XII</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #0f172a;
+            --primary-light: #1e293b;
+            --accent-red: #dc2626;
+            --accent-red-hover: #b91c1c;
+            --accent-gold: #d97706;
+            --accent-blue: #0284c7;
+            --bg-light: #f8fafc;
+            --card-bg: #ffffff;
+            --text-dark: #0f172a;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+            --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+            --shadow-md: 0 10px 20px -3px rgba(0,0,0,0.08), 0 4px 6px -2px rgba(0,0,0,0.04);
+            --shadow-lg: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* Container Layout */
+        .container {
+            width: 92%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid rgba(255,255,255,0.1);
+            box-shadow: var(--shadow-md);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            color: #ffffff;
+            font-size: 1.25rem;
+            font-weight: 800;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            color: var(--accent-red);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #cbd5e1;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            padding: 8px 14px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: #ffffff;
+            background-color: rgba(255, 255, 255, 0.12);
+        }
+
+        .btn-doc {
+            background-color: var(--accent-red) !important;
+            color: #ffffff !important;
+            box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
+        }
+
+        .btn-doc:hover {
+            background-color: var(--accent-red-hover) !important;
+            transform: translateY(-2px);
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: #ffffff;
+            padding: 4rem 0 3.5rem 0;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 5px solid var(--accent-red);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(220, 38, 38, 0.15) 0%, rgba(0,0,0,0) 70%);
+            pointer-events: none;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .profile-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            padding: 24px;
+            text-align: center;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .profile-img-box {
+            width: 220px;
+            height: 270px;
+            margin: 0 auto 18px auto;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 4px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+            background-color: #334155;
+            position: relative;
+        }
+
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: var(--transition);
+        }
+
+        .profile-img:hover {
+            transform: scale(1.05);
+        }
+
+        .hero-content h1 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+            line-height: 1.25;
+            letter-spacing: -0.5px;
+        }
+
+        .hero-subtitle {
+            color: #38bdf8;
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .hero-desc {
+            color: #94a3b8;
+            font-size: 1rem;
+            margin-bottom: 25px;
+            max-width: 750px;
+            line-height: 1.7;
+        }
+
+        .badge-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+
+        .badge {
+            background: rgba(220, 38, 38, 0.2);
+            color: #fca5a5;
+            border: 1px solid rgba(220, 38, 38, 0.4);
+            padding: 6px 14px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        section {
+            padding: 4.5rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2rem;
+            color: var(--primary-color);
+            font-weight: 800;
+            position: relative;
+            display: inline-block;
+            letter-spacing: -0.5px;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70px;
+            height: 4px;
+            background-color: var(--accent-red);
+            border-radius: 2px;
+        }
+
+        .section-title p {
+            color: var(--text-muted);
+            margin-top: 15px;
+            font-size: 1rem;
+        }
+
+        .biodata-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .info-card {
+            background-color: var(--card-bg);
+            border-radius: 16px;
+            padding: 22px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            align-items: flex-start;
+            gap: 18px;
+            transition: var(--transition);
+        }
+
+        .info-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+            border-color: #cbd5e1;
+        }
+
+        .info-icon {
+            background-color: #f1f5f9;
+            color: var(--accent-red);
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+
+        .info-text h4 {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            font-weight: 700;
+        }
+
+        .info-text p {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-top: 4px;
+        }
+
+        .timeline-section {
+            background-color: #ffffff;
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 850px;
+            margin: 0 auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            width: 3px;
+            background-color: #e2e8f0;
+            top: 0;
+            bottom: 0;
+            left: 20px;
+        }
+
+        .timeline-item {
+            padding: 0 0 35px 55px;
+            position: relative;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 10px;
+            top: 4px;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background-color: var(--accent-red);
+            border: 4px solid #ffffff;
+            box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.2);
+        }
+
+        .timeline-content {
+            background-color: var(--bg-light);
+            border-radius: 14px;
+            padding: 22px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+
+        .timeline-content:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateX(4px);
+        }
+
+        .timeline-date {
+            display: inline-block;
+            background-color: #e0f2fe;
+            color: #0369a1;
+            font-size: 0.8rem;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 6px;
+            margin-bottom: 10px;
+        }
+
+        .timeline-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .timeline-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-top: 6px;
+            line-height: 1.6;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 22px;
+        }
+
+        .skill-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 28px 20px;
+            border: 1px solid var(--border-color);
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .skill-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-md);
+            border-color: #cbd5e1;
+        }
+
+        .skill-icon {
+            font-size: 2.5rem;
+            color: var(--accent-gold);
+            margin-bottom: 16px;
+            display: inline-block;
+        }
+
+        .skill-card h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--primary-color);
+        }
+
+        .skill-card p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        .programs-section {
+            background-color: #ffffff;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .program-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .program-card {
+            background-color: var(--bg-light);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+
+        .program-card:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-5px);
+        }
+
+        .program-img-wrapper {
+            width: 100%;
+            height: 190px;
+            overflow: hidden;
+            position: relative;
+            background-color: #cbd5e1;
+        }
+
+        .program-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .program-card:hover .program-img {
+            transform: scale(1.08);
+        }
+
+        .program-body {
+            padding: 22px;
+        }
+
+        .program-body h3 {
+            font-size: 1.15rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .program-body p {
+            font-size: 0.92rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .doc-section {
+            background-color: #f1f5f9;
+            border-top: 2px dashed #cbd5e1;
+            padding: 5rem 0;
+        }
+
+        .doc-box {
+            background-color: #ffffff;
+            border-radius: 20px;
+            padding: 35px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-md);
+        }
+
+        .doc-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--bg-light);
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .doc-header h3 {
+            font-size: 1.4rem;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 800;
+        }
+
+        .doc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .doc-card {
+            background-color: var(--bg-light);
+            border-radius: 12px;
+            padding: 22px;
+            border-left: 4px solid var(--accent-blue);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .doc-card.git-card {
+            border-left-color: var(--accent-red);
+        }
+
+        .doc-card.structure-card {
+            border-left-color: var(--accent-gold);
+        }
+
+        .doc-card h4 {
+            font-size: 1.05rem;
+            color: var(--primary-color);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .doc-card ol, .doc-card ul {
+            padding-left: 20px;
+            font-size: 0.92rem;
+            color: var(--text-dark);
+        }
+
+        .doc-card li {
+            margin-bottom: 8px;
+        }
+
+        .code-snippet {
+            background-color: #0f172a;
+            color: #38bdf8;
+            padding: 12px 16px;
+            border-radius: 8px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.85rem;
+            margin: 8px 0;
+            overflow-x: auto;
+            display: block;
+            line-height: 1.5;
+        }
+
+        .table-responsive {
+            overflow-x: auto;
+            margin-top: 15px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        th {
+            background-color: var(--primary-color);
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f8fafc;
+        }
+
+        footer {
+            background-color: var(--primary-color);
+            color: #94a3b8;
+            text-align: center;
+            padding: 2.5rem 0;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        footer p {
+            margin-top: 6px;
+        }
+
+        footer strong {
+            color: #ffffff;
+        }
+
+        @media (max-width: 868px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-subtitle, .badge-list {
+                justify-content: center;
+            }
+
+            .hero-desc {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .nav-links {
+                display: none; /* Collapsible or hidden on mobile for clean look */
+            }
+
+            .nav-links.active {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: var(--primary-color);
+                padding: 20px;
+                box-shadow: var(--shadow-lg);
+            }
+
+            .mobile-menu-btn {
+                display: block;
+                color: #ffffff;
+                font-size: 1.5rem;
+                background: none;
+                border: none;
+                cursor: pointer;
+            }
+
+            .timeline::before {
+                left: 15px;
+            }
+
+            .timeline-item {
+                padding-left: 42px;
+            }
+
+            .timeline-dot {
+                left: 5px;
+            }
+        }
+
+        @media (min-width: 869px) {
+            .mobile-menu-btn {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container navbar">
+            <a href="#" class="logo">
+                <i class="fa-solid fa-star" style="color: var(--accent-gold);"></i> PORTOFOLIO <span>IDOLA</span>
+            </a>
+            
+            <button class="mobile-menu-btn" onclick="toggleMenu()" aria-label="Toggle Navigation Menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#profil"><i class="fa-solid fa-user"></i> Profil</a></li>
+                <li><a href="#pendidikan"><i class="fa-solid fa-graduation-cap"></i> Pendidikan & Karier</a></li>
+                <li><a href="#keahlian"><i class="fa-solid fa-award"></i> Keahlian & Hobi</a></li>
+                <li><a href="#program"><i class="fa-solid fa-flag"></i> Visi & Program</a></li>
+                <li><a href="#dokumentasi" class="btn-doc"><i class="fa-solid fa-book"></i> Catatan Tugas XII</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container hero-grid">
+            <div class="profile-card">
+                <div class="profile-img-box">
+                    <img src="alzena.portofolio/Presiden_Prabowo_Subianto.jpg" 
+                         alt="Foto Profil H. Prabowo Subianto" 
+                         class="profile-img"
+                         onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=500&q=80';">
+                </div>
+                <h3 style="color: #ffffff; font-size: 1.15rem; font-weight: 700;">H. Prabowo Subianto</h3>
+                <p style="color: #38bdf8; font-size: 0.88rem; font-weight: 600; margin-top: 2px;">Presiden Republik Indonesia ke-8</p>
+            </div>
+
+            <div class="hero-content">
+                <div class="badge-list">
+                    <span class="badge"><i class="fa-solid fa-shield-halved"></i> Jenderal TNI (Purn.)</span>
+                    <span class="badge"><i class="fa-solid fa-landmark"></i> Kepala Negara RI</span>
+                    <span class="badge"><i class="fa-solid fa-building-columns"></i> Pendiri Partai Gerindra</span>
+                </div>
+                <h1>Jenderal TNI (Purn.) H. Prabowo Subianto Djojohadikusumo</h1>
+                <p class="hero-subtitle">
+                    <i class="fa-solid fa-check-circle" style="color: #38bdf8;"></i> Tokoh Pemimpin Bangsa & Presiden RI (2024 – Sekarang)
+                </p>
+                <p class="hero-desc">
+                    Sosok purnawirawan perwira tinggi militer Indonesia, pengusaha, dan tokoh politik terkemuka. Dikenal memiliki jiwa kepemimpinan yang tegas, berwawasan geopolitik luas, memiliki jiwa patriotik yang tinggi, serta senantiasa memperjuangkan kemandirian bangsa dan kesejahteraan masyarakat.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="profil" class="container">
+        <div class="section-title">
+            <h2>Profil & Informasi Umum</h2>
+            <p>Biodata lengkap dan latar belakang kehidupan tokoh idola</p>
+        </div>
+
+        <div class="biodata-grid">
+            <div class="info-card">
+                <div class="info-icon"><i class="fa-solid fa-id-card"></i></div>
+                <div class="info-text">
+                    <h4>Nama Lengkap</h4>
+                    <p>H. Prabowo Subianto Djojohadikusumo</p>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <div class="info-icon"><i class="fa-solid fa-cake-candles"></i></div>
+                <div class="info-text">
+                    <h4>Tempat, TGL Lahir</h4>
+                    <p>Jakarta, 17 Oktober 1951</p>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <div class="info-icon"><i class="fa-solid fa-user-tie"></i></div>
+                <div class="info-text">
+                    <h4>Jabatan Saat Ini</h4>
+                    <p>Presiden Republik Indonesia ke-8</p>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <div class="info-icon"><i class="fa-solid fa-briefcase"></i></div>
+                <div class="info-text">
+                    <h4>Jabatan Sebelumnya</h4>
+                    <p>Menteri Pertahanan RI (2019–2024)</p>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <div class="info-icon"><i class="fa-solid fa-people-roof"></i></div>
+                <div class="info-text">
+                    <h4>Orang Tua</h4>
+                    <p>Prof. Soemitro Djojohadikusumo & Dora Marie Sigar</p>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <div class="info-icon"><i class="fa-solid fa-child"></i></div>
+                <div class="info-text">
+                    <h4>Putra</h4>
+                    <p>Ragowo Hediprasetyo (Didit Hediprasetyo)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pendidikan" class="timeline-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Pendidikan & Perjalanan Karier</h2>
+                <p>Rekam jejak pendidikan internasional dan pengabdian militer serta politik</p>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">Masa Muda / Luar Negeri</span>
+                        <h3 class="timeline-title">Pendidikan Formal Internasional</h3>
+                        <p class="timeline-desc">Menempuh pendidikan menengah di Victoria Institution (Kuala Lumpur, Malaysia), International School of Bangkok (Thailand), dan American School in London (Inggris).</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">Lulus Tahun 1974</span>
+                        <h3 class="timeline-title">Akademi Militer (AKABRI Magelang)</h3>
+                        <p class="timeline-desc">Menyelesaikan pendidikan militer di Akabri Magelang dan memulai karier pengabdian sebagai perwira TNI Angkatan Darat.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">1995 – 1998</span>
+                        <h3 class="timeline-title">Danjen Kopassus & Pangkostrad</h3>
+                        <p class="timeline-desc">Memimpin Komando Pasukan Khusus (Kopassus) dan berhasil memimpin Operasi Pembebasan Sandera Mapenduma (1996), lalu menjabat sebagai Panglima Kostrad.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">2008 – Sekarang</span>
+                        <h3 class="timeline-title">Pendiri & Ketum Partai Gerindra</h3>
+                        <p class="timeline-desc">Mendirikan Partai Gerakan Indonesia Raya (Gerindra) yang tumbuh menjadi salah satu partai politik terbesar dan berpengaruh di Indonesia.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">2019 – 2024</span>
+                        <h3 class="timeline-title">Menteri Pertahanan Republik Indonesia</h3>
+                        <p class="timeline-desc">Berfokus pada modernisasi Alutsista TNI, penguatan diplomasi pertahanan tingkat dunia, serta pengembangan kemandirian industri pertahanan dalam negeri.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">20 Oktober 2024 – Sekarang</span>
+                        <h3 class="timeline-title">Presiden Republik Indonesia ke-8</h3>
+                        <p class="timeline-desc">Dilantik secara resmi sebagai Presiden Republik Indonesia ke-8 bersama Wakil Presiden Gibran Rakabuming Raka untuk memimpin Kabinet Merah Putih.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="keahlian" class="container">
+        <div class="section-title">
+            <h2>Keahlian, Hobi & Organisasi</h2>
+            <p>Kegemaran, kepemimpinan, dan aktivitas sosial yang ditekuni</p>
+        </div>
+
+        <div class="skills-grid">
+            <div class="skill-card">
+                <i class="fa-solid fa-horse skill-icon"></i>
+                <h3>Olahraga Berkuda</h3>
+                <p>Memiliki hobi ketangkasan berkuda (*equestrian*) dan mendirikan fasilitas pelatihan berkuda berstandar internasional.</p>
+            </div>
+
+            <div class="skill-card">
+                <i class="fa-solid fa-hand-fist skill-icon"></i>
+                <h3>Pencak Silat (PB IPSI)</h3>
+                <p>Menjabat sebagai Ketua Umum Pengurus Besar Ikatan Pencak Silat Indonesia (PB IPSI) untuk melestarikan seni bela diri warisan bangsa.</p>
+            </div>
+
+            <div class="skill-card">
+                <i class="fa-solid fa-wheat-awn skill-icon"></i>
+                <h3>Sektor Pertanian (HKTI)</h3>
+                <p>Pernah memimpin Himpunan Kerukunan Tani Indonesia (HKTI) untuk memperjuangkan nasib dan tingkat kesejahteraan para petani Indonesia.</p>
+            </div>
+
+            <div class="skill-card">
+                <i class="fa-solid fa-chess-knight skill-icon"></i>
+                <h3>Strategi & Geopolitik</h3>
+                <p>Menguasai berbagai bahasa asing, pemikiran strategi militer, kepemimpinan organisasi, dan analisis geopolitik global.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="program" class="programs-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Visi & Program Unggulan (Asta Cita)</h2>
+                <p>Fokus kebijakan dan program prioritas dalam memimpin bangsa Indonesia</p>
+            </div>
+
+            <div class="program-container">
+                <div class="program-card">
+                    <div class="program-img-wrapper">
+                        <img src="alzena.portofolio/swasembada.jpeg" 
+                             alt="Swasembada Pangan & Energi" 
+                             class="program-img"
+                             onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=600&q=80';">
+                    </div>
+                    <div class="program-body">
+                        <h3>1. Swasembada Pangan & Energi</h3>
+                        <p>Meningkatkan kemandirian bangsa dengan mengoptimalkan potensi lahan pertanian nasional, food estate, serta energi terbarukan lokal.</p>
+                    </div>
+                </div>
+
+                <div class="program-card">
+                    <div class="program-img-wrapper">
+                        <img src="alzena.portofolio/mbg.jpg" 
+                             alt="Makan Bergizi Gratis" 
+                             class="program-img"
+                             onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&fit=crop&w=600&q=80';">
+                    </div>
+                    <div class="program-body">
+                        <h3>2. Makan Bergizi Gratis</h3>
+                        <p>Program pemenuhan nutrisi dan makan siang bergizi gratis bagi anak-anak sekolah, balita, dan ibu hamil untuk mengatasi masalah stunting.</p>
+                    </div>
+                </div>
+
+                <div class="program-card">
+                    <div class="program-img-wrapper">
+                        <img src="alzena.portofolio/Hilirisasi.jpg" 
+                             alt="Hilirisasi Industri" 
+                             class="program-img"
+                             onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=600&q=80';">
+                    </div>
+                    <div class="program-body">
+                        <h3>3. Hilirisasi Industri & Ekonomi</h3>
+                        <p>Mengolah bahan tambang dan komoditas alam langsung di dalam negeri untuk menciptakan nilai tambah ekonomi serta menyerap jutaan tenaga kerja.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
